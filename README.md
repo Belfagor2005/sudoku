@@ -1,6 +1,9 @@
 # sudoku
  
 <img src="https://github.com/Belfagor2005/sudoku/blob/main/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/sudoku.png?raw=true"> 
+
+
+<img src="https://i.ibb.co/vLq68C2/sudoku.jpg">
  
 Mit den Tasten „<“ und „>“ kann die Spielstärke verändert werden
 Durch Drücken der "0" wird das aktuelle Feld gelöscht.
