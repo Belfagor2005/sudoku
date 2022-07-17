@@ -7,6 +7,7 @@
 # the terms of the GNU General Public License as published by the Free
 # Software Foundation; either version 2, or (at your option) any later
 # version.
+# modded by Lululla to 20220713 - skin by MMark 
 #===============================================================================
 
 from Plugins.Plugin import PluginDescriptor
@@ -21,21 +22,35 @@ from enigma import eTimer, gFont, getDesktop, RT_HALIGN_CENTER, RT_VALIGN_CENTER
 import random
 import xml.etree.cElementTree
 from six.moves import range
-import os                                                                                  
+import os     
+                                                                             
 VERSION = "0.3r0"
 SAVEFILE = "/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/Sudoku.sav"
-
 helper ='The playing strength can be changed with the "<" and ">"\nkeys pressing the "0" the current field is deleted.\nUse CH + / CH- to change level. When you quit the game,\nthe game state is saved in the plugin directory and reloaded\nautomatically on next start ...good fun!\nDark Volli - by Robert Wohleb\nModded by Lululla - Skin by MMark at 20220714'
-def RGB(r, g, b):
-    return (r << 16) | (g << 8) | b
 
+def getDesktopSize():
+    from enigma import getDesktop
+    s = getDesktop(0).size()
+    return (s.width(), s.height())
+
+def isFHD():
+    desktopSize = getDesktopSize()
+    return desktopSize[0] == 1920
 
 def main(session, **kwargs):
-    session.open(Sudoku)
+    if isFHD():
+        session.open(Sudoku)   
+    else:
+        from Screens.MessageBox import MessageBox
+        from Tools.Notifications import AddPopup
+        AddPopup(_("Sorry but Sudoku only works with FHD skins :("),MessageBox.TYPE_INFO, 10, 'Sorry')
 
 def Plugins(**kwargs):
     return [PluginDescriptor(name="Sudoku", description=_("Sudoku Game"), where = [PluginDescriptor.WHERE_PLUGINMENU],
             icon="sudoku.png", fnc=main)]
+            
+def RGB(r, g, b):
+    return (r << 16) | (g << 8) | b
 
 # thanks to Robert Wohleb for this class...
 class board:
@@ -208,28 +223,11 @@ class Sudoku(Screen):
         desk = getDesktop(0)
         w = int(desk.size().width())
         h = int(desk.size().height())
-
         # display window in center...
         # x = (w - 520) // 2
         # y = (h - 390) // 2
-        
-        
         x = 60
         y = 140
-        
-        # def adaptScreen(self):
-                # self.fb_w = getDesktop(0).size().width()
-                # self.fb_h = getDesktop(0).size().height()
-                # if self.fb_w < 1920:
-                        # Cell.w = 66
-                        # Cell.h = 66
-                        # Cell.fontsize = 30
-                        # self.useskin = "hd"
-                # else:
-                        # Cell.w = 100
-                        # Cell.h = 100
-                        # Cell.fontsize = 48
-                        # self.useskin = "fhd"
         # set skin...
         Sudoku.skin = """
                 <screen name="Sudoku" position="%d,%d" size="1800,900" title="Sudoku" backgroundColor="#101010">
@@ -362,28 +360,12 @@ class Sudoku(Screen):
             tmp = []
             for i in range(9):
                 cell = SudokuCell(self["Canvas"],
-                                  j * (CELL_SIZE + CELL_OFFSET) + (j // 3) * (GROUP_SIZE - 3 * CELL_SIZE),
-                                  i * (CELL_SIZE + CELL_OFFSET) + (i // 3) * (GROUP_SIZE - 3 * CELL_SIZE),
-                                  CELL_SIZE, CELL_SIZE)
+                      j * (CELL_SIZE + CELL_OFFSET) + (j // 3) * (GROUP_SIZE - 3 * CELL_SIZE),
+                      i * (CELL_SIZE + CELL_OFFSET) + (i // 3) * (GROUP_SIZE - 3 * CELL_SIZE),
+                      CELL_SIZE, CELL_SIZE)
                 tmp.append(cell)
             self.board_cells.append(tmp)        
         
-        
-        ## edit lululla original
-        # GROUP_SIZE = 108
-        # CELL_SIZE = 35
-        # CELL_OFFSET = 4
-
-        # for j in range(9):
-            # tmp = []
-            # for i in range(9):
-                # cell = SudokuCell(self["Canvas"],
-                                  # j * (CELL_SIZE + CELL_OFFSET) + (j // 3) * (GROUP_SIZE - 3 * CELL_SIZE),
-                                  # i * (CELL_SIZE + CELL_OFFSET) + (i // 3) * (GROUP_SIZE - 3 * CELL_SIZE),
-                                  # CELL_SIZE, CELL_SIZE)
-                # tmp.append(cell)
-            # self.board_cells.append(tmp)
-
         row = [0, 0, 0, 0, 0, 0, 0, 0, 0]
         for i in range(0, 9):
             self.board_values.append(row[:])
@@ -521,21 +503,13 @@ class Sudoku(Screen):
     # displays time in title...
 
     def timerHandler(self):
-        # if self.cnt > 0:
-            # self.instance.setTitle("Sudoku 0.1 %10d sec" % self.cnt)
-            # self.cnt += 1
-        # else:
-            # self.instance.setTitle("Sudoku 0.1")
-            
         if self.cnt > 0:
-            # self.instance.setTitle("Sudoku 0.1 %10d sec" % self.cnt)
             self["movex"].setText("%10d sec" % self.cnt) 
             self.cnt += 1
         else:
             self["movex"].setText("HELLO")                
 
     # look for wrong cells...
-
     def check_game(self, highlight):
         empty = False
         correct = True
