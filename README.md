@@ -12,7 +12,9 @@ Wenn Sie das Spiel beenden, wird der Spielstand im Plugin-Verzeichnis gespeicher
 und beim nächsten Start automatisch neu geladen ...
 viel Spaß!
 Dark Volli - von Robert Wohleb
+
 Modifiziert von Lululla – Skin von MMark unter 20220714
+
 
 
 
@@ -23,7 +25,8 @@ Quando esci dal gioco, lo stato del gioco viene salvato nella directory del plug
 e ricaricato automaticamente al prossimo avvio... 
 buon divertimento!
 Dark Volli - da Robert Wohleb
-Modded da Lululla - Skin di MMark a 20220714
+
+Modificato da Lululla - Skin di MMark a 20220714
 
 
 
@@ -33,5 +36,7 @@ Use CH + / CH- to change level
 When you quit the game, the game state is saved in the plugin directory
 and reloaded automatically on next start ...
 good fun!
+
 Dark Volli - by Robert Wohleb
-Modded by Lululla - Skin by MMark at 20220714
+
+Adapted for Enigma2 Py3 by Lululla Skin by MMark at 20220714
