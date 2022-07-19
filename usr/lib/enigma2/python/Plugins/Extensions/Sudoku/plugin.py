@@ -9,23 +9,21 @@
 # version.
 # modded by Lululla to 20220713 - skin by MMark 
 #===============================================================================
-
-from Plugins.Plugin import PluginDescriptor
-from Screens.Screen import Screen
-from Screens.MessageBox import MessageBox
-from Components.Sources.CanvasSource import CanvasSource
+from Components.ActionMap import ActionMap
 from Components.Button import Button
 from Components.Label import Label
-from Components.ActionMap import ActionMap
-from Tools.Directories import fileExists, resolveFilename, SCOPE_CURRENT_SKIN
+from Components.Sources.CanvasSource import CanvasSource
+from Plugins.Plugin import PluginDescriptor
+from Screens.MessageBox import MessageBox
+from Screens.Screen import Screen
+from Tools.Directories import fileExists, resolveFilename, SCOPE_CURRENT_SKIN, SCOPE_CURRENT_PLUGIN
 from enigma import eTimer, gFont, getDesktop, RT_HALIGN_CENTER, RT_VALIGN_CENTER
-import random
-import xml.etree.cElementTree
+from random import seed, randint
 from six.moves import range
 import os
-                                                                             
+from xml.etree.cElementTree import parse
 VERSION = "7.1r0"
-SAVEFILE = "/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/Sudoku.sav"
+SAVEFILE = resolveFilename(SCOPE_CURRENT_PLUGIN, "Extensions/Sudoku/Sudoku.sav")
 helper ='The playing strength can be changed with the "<" and ">"\nkeys pressing the "0" the current field is deleted.\nUse CH + / CH- to change level. When you quit the game,\nthe game state is saved in the plugin directory and reloaded\nautomatically on next start ...good fun!\nDark Volli - by Robert Wohleb\nModded by Lululla - Skin by MMark at 20220714'
 
 def getDesktopSize():
@@ -38,12 +36,7 @@ def isFHD():
     return desktopSize[0] == 1920
 
 def main(session, **kwargs):
-    # if isFHD():
         session.open(Sudoku)   
-    # else:
-        # from Screens.MessageBox import MessageBox
-        # from Tools.Notifications import AddPopup
-        # AddPopup(_("Sorry but Sudoku only works with FHD skins :("),MessageBox.TYPE_INFO, 10, 'Sorry')
 
 def Plugins(**kwargs):
     return [PluginDescriptor(name="Sudoku", description=_("Sudoku Game"), where = [PluginDescriptor.WHERE_PLUGINMENU],
@@ -61,7 +54,7 @@ class board:
         slots = []
         fillOrder = []
 
-        random.seed()
+        seed()
 
         # setup board
         row = [0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -75,7 +68,7 @@ class board:
         self.search(slots, 0)
 
         while len(slots) > 0:
-            i = random.randint(0, len(slots) - 1)
+            i = randint(0, len(slots) - 1)
             fillOrder.append(slots[i])
             del slots[i]
 
@@ -98,7 +91,7 @@ class board:
             nums.append(i)
 
         while len(nums) > 0:
-            i = random.randint(0, len(nums) - 1)
+            i = randint(0, len(nums) - 1)
             fillOrder.append(nums[i])
             del nums[i]
 
@@ -225,8 +218,6 @@ class Sudoku(Screen):
         w = int(desk.size().width())
         h = int(desk.size().height())
         # display window in center...
-     
-        
         if isFHD():
             x = 60
             y = 140
@@ -235,7 +226,6 @@ class Sudoku(Screen):
             y = 0
             # x = (w - 520) // 2
             # y = (h - 390) // 2            
-            
         # set skin...
         if isFHD():
             Sudoku.skin = """
@@ -256,25 +246,6 @@ class Sudoku(Screen):
                     </screen>""" % (x, y)         
             
         else:
-            # Sudoku.skin = """
-            
-                    # <screen name="Sudoku" position="%d,%d" size="1280,720" title="Sudoku" backgroundColor="#101010">
-                        # <ePixmap position="0,0" size="1800,900" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/pic/sudoku.jpg" />
-                        # <widget name="gamelevel" position="50,10" size="350,70" valign="center" halign="center" font="Regular;40" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="1" />
-                        # <widget source="Canvas" render="Canvas" position="794,150" size="873,522" backgroundColor="#60ffffff" transparent="1" alphatest="blend" zPosition="2" />
-                        # <ePixmap position="50,165" pixmap="buttons/key_green.png" size="80,40" alphatest="blend" zPosition="2" />
-                        # <widget name="key_green" font="Regular;30" position="150,165" size="450,40" halign="left" valign="center" backgroundColor="black" zPosition="1" transparent="1" />
-                        # <ePixmap position="50,215" pixmap="buttons/key_red.png" size="80,40" alphatest="blend" zPosition="2" />
-                        # <widget name="key_red" font="Regular;30" position="150,215" size="450,40" halign="left" valign="center" backgroundColor="black" zPosition="1" transparent="1" />
-                        # <ePixmap position="50,265" pixmap="buttons/key_blue.png" size="80,40" alphatest="blend" zPosition="2" />
-                        # <widget name="key_blue" font="Regular;30" position="152,265" size="450,40" halign="left" valign="center" backgroundColor="black" zPosition="1" transparent="1" />
-                        # <eLabel position="50,315" size="300,3" backgroundColor="#202020" zPosition="1" />
-                        # <ePixmap position="47,82" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/pic/rocket.png" alphatest="blend" zPosition="3" />
-                        # <widget name="result" render="Label" position="772,703" size="914,185" font="Regular; 32" halign="left" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="3" />
-                        # <widget name="movex" render="Label" position="151,98" size="229,50" font="Regular;30" halign="left" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="3" />
-                    # </screen>""" 
-
-
             Sudoku.skin = """
                         <screen name="Sudoku" position="%d,%d" size="1260,720" title="Sudoku" backgroundColor="#101010">
                         <ePixmap position="0,0" size="1259,720" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/pic/sudokuHD.jpg" />
@@ -299,7 +270,7 @@ class Sudoku(Screen):
         # there must exist a better way? everything is taken from skin.py
         # find xml for actual skin...
         filename = resolveFilename(SCOPE_CURRENT_SKIN) + "skin.xml"
-        actualSkin = xml.etree.cElementTree.parse(filename).getroot()
+        actualSkin = parse(filename).getroot()
 
         # get colors from skin and write to dictionary
         colorNames = dict()
@@ -386,14 +357,13 @@ class Sudoku(Screen):
         self.board_cells = []
         self.board_values = []
         # ToDo: change for HD Skins...
-        
+
         # edit lululla original
         # GROUP_SIZE = 108
         # CELL_SIZE = 35
         # CELL_OFFSET = 4
         
         # if isFHD():
-        
         GROUP_SIZE = 208
         CELL_SIZE = 70
         CELL_OFFSET = 4
