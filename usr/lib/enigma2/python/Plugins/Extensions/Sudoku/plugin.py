@@ -23,7 +23,7 @@ from random import seed, randint
 from six.moves import range
 import os
 from xml.etree.cElementTree import parse
-VERSION = "7.1r0"
+VERSION = "7.1r1"
 SAVEFILE = resolveFilename(SCOPE_CURRENT_PLUGIN, "Extensions/Sudoku/Sudoku.sav")
 helper = 'The playing strength can be changed with the "<" and ">"\nkeys, pressing the "0" the current field is deleted.\nUse CH + / CH- to change level. When you quit the game,\nthe game state is saved in the plugin directory and reloaded\nautomatically on next start ...good fun!\nDark Volli - by Robert Wohleb\nModded by Lululla - Skin by MMark at 20220714'
 
@@ -325,8 +325,11 @@ class Sudoku(Screen):
 
         self.cnt = 0
         self.timer = eTimer()
-        self.timer.callback.append(self.timerHandler)
-
+        if os.path.exists('/var/lib/dpkg/info'):
+            self.timer_conn = self.timer.timeout.connect(self.timerHandler)
+        else:
+            self.timer.callback.append(self.timerHandler)
+        self.timer.start(150, 1)
         self.xFocus = 4
         self.yFocus = 4
 
@@ -365,12 +368,10 @@ class Sudoku(Screen):
         self.board_cells = []
         self.board_values = []
         # ToDo: change for HD Skins...
-
         # edit lululla original
         # GROUP_SIZE = 108
         # CELL_SIZE = 35
         # CELL_OFFSET = 4
-
         # if isFHD():
         GROUP_SIZE = 208
         CELL_SIZE = 70
