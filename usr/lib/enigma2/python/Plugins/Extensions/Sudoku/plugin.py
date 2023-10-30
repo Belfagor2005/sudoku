@@ -36,7 +36,7 @@ def getDesktopSize():
 
 def isFHD():
     desktopSize = getDesktopSize()
-    return desktopSize[0] == 1920
+    return desktopSize[0] >= 1920
 
 
 def main(session, **kwargs):
@@ -236,7 +236,7 @@ class Sudoku(Screen):
         # set skin...
         if isFHD():
             Sudoku.skin = """
-                    <screen name="Sudoku" position="60,140" size="1800,900" title="Sudoku" backgroundColor="#101010">
+                    <screen name="Sudoku" position="center,center" size="1800,900" title="Sudoku" backgroundColor="#101010">
                         <ePixmap position="0,0" size="1800,900" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/pic/sudoku.jpg" />
                         <widget name="gamelevel" position="145,80" size="331,70" valign="center" halign="center" font="Regular;40" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="1" />
                         <widget source="Canvas" render="Canvas" position="1025,99" size="696,661" backgroundColor="#60ffffff" transparent="1" alphatest="blend" zPosition="2" />
@@ -255,7 +255,7 @@ class Sudoku(Screen):
 
         else:
             Sudoku.skin = """
-                        <screen name="Sudoku" position="0,0" size="1260,720" title="Sudoku" backgroundColor="#101010">
+                        <screen name="Sudoku" position="center,center" size="1280,720" title="Sudoku" backgroundColor="#101010">
                         <ePixmap position="0,0" size="1259,720" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/pic/sudokuHD.jpg" />
                         <widget name="gamelevel" position="58,104" size="250,50" valign="center" halign="center" font="Regular; 34" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="1" />
                         <widget source="Canvas" render="Canvas" position="534,28" size="696,661" backgroundColor="#60ffffff" transparent="1" alphatest="blend" zPosition="2" />
