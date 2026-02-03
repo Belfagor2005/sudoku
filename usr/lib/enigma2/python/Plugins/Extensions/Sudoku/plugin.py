@@ -22,6 +22,7 @@ from enigma import eTimer, gFont, getDesktop, RT_HALIGN_CENTER, RT_VALIGN_CENTER
 from random import seed, randint
 from six.moves import range
 import os
+from . import _
 from xml.etree.cElementTree import parse
 VERSION = "7.1r1"
 SAVEFILE = resolveFilename(SCOPE_CURRENT_PLUGIN, "Extensions/Sudoku/Sudoku.sav")
@@ -251,7 +252,6 @@ class Sudoku(Screen):
                         <widget name="result" render="Label" position="80,499" size="835,276" font="Regular; 32" halign="left" foregroundColor="#ffff00" backgroundColor="#000000" transparent="1" zPosition="3" />
                         <widget name="movex" render="Label" position="133,193" size="229,50" font="Regular; 34" halign="left" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="3" />
                     </screen>"""
-                    # % (x, y)
 
         else:
             Sudoku.skin = """
@@ -273,7 +273,6 @@ class Sudoku(Screen):
                         <eLabel name="" position="57,164" size="70,40" zPosition="3" backgroundColor="green" />
                         </screen>
                         """
-                        # % (x, y)
 
         # i'm not really sure if this is the right way to get the background color from a skinned window?
         # there must exist a better way? everything is taken from skin.py
