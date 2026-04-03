@@ -1,35 +1,35 @@
 
 
-# <p align="center">sudoku Plugin for Enigma2 (E²) ![GitHub repo size](https://img.shields.io/github/repo-size/oe-alliance-plugins/sudoku.svg)</p>
+# <p align="center">Sudoku Plugin for Enigma2 (E²) ![GitHub repo size](https://img.shields.io/github/repo-size/oe-alliance-plugins/Sudoku.svg)</p>
 
 **Sudoku Game FHD modded by Lululla**
 
 
 ## Github status
-[![Build](https://github.com/oe-alliance-plugins/sudoku/actions/workflows/buildbot.yml/badge.svg)](https://github.com/oe-alliance-plugins/sudoku/actions/workflows/buildbot.yml)
-[![Lint Status](https://github.com/oe-alliance-plugins/sudoku/actions/workflows/pylint.yml/badge.svg)](https://github.com/oe-alliance-plugins/sudoku/actions/workflows/pylint.yml)
-[![Ruff Status](https://github.com/oe-alliance-plugins/sudoku/actions/workflows/ruff.yml/badge.svg)](https://github.com/oe-alliance-plugins/sudoku/actions/workflows/ruff.yml)
-[![Build Status](https://github.com/oe-alliance-plugins/sudoku/actions/workflows/compile.yml/badge.svg)](https://github.com/oe-alliance-plugins/sudoku/actions/workflows/compile.yml)
-[![AUTOTAG](https://github.com/oe-alliance-plugins/sudoku/actions/workflows/autotag.yml/badge.svg)](https://github.com/oe-alliance-plugins/sudoku/actions/workflows/autotag.yml)
+[![Build](https://github.com/oe-alliance-plugins/Sudoku/actions/workflows/buildbot.yml/badge.svg)](https://github.com/oe-alliance-plugins/Sudoku/actions/workflows/buildbot.yml)
+[![Lint Status](https://github.com/oe-alliance-plugins/Sudoku/actions/workflows/pylint.yml/badge.svg)](https://github.com/oe-alliance-plugins/Sudoku/actions/workflows/pylint.yml)
+[![Ruff Status](https://github.com/oe-alliance-plugins/Sudoku/actions/workflows/ruff.yml/badge.svg)](https://github.com/oe-alliance-plugins/Sudoku/actions/workflows/ruff.yml)
+[![Build Status](https://github.com/oe-alliance-plugins/Sudoku/actions/workflows/compile.yml/badge.svg)](https://github.com/oe-alliance-plugins/Sudoku/actions/workflows/compile.yml)
+[![AUTOTAG](https://github.com/oe-alliance-plugins/Sudoku/actions/workflows/autotag.yml/badge.svg)](https://github.com/oe-alliance-plugins/Sudoku/actions/workflows/autotag.yml)
 
 
-[![Plugin Version](https://img.shields.io/github/v/tag/oe-alliance-plugins/sudoku?label=Latest%20Version&color=darkviolet)](https://github.com/oe-alliance-plugins/sudoku/tags)
-[![Latest Release](https://img.shields.io/github/release-date/oe-alliance-plugins/sudoku?label=From&color=darkviolet)](https://github.com/oe-alliance-plugins/sudoku/releases/latest)
-[![Github last commit](https://img.shields.io/github/last-commit/oe-alliance-plugins/sudoku)](https://github.com/oe-alliance-plugins/sudoku)
-[![GitHub Activity](https://img.shields.io/github/commit-activity/y/oe-alliance-plugins/sudoku.svg?label=commits)](https://github.com/oe-alliance-plugins/sudoku/commits)
-[![GitHub Activity](https://img.shields.io/github/commit-activity/m/oe-alliance-plugins/sudoku.svg?label=commits)](https://github.com/oe-alliance-plugins/sudoku/commits)
+[![Plugin Version](https://img.shields.io/github/v/tag/oe-alliance-plugins/Sudoku?label=Latest%20Version&color=darkviolet)](https://github.com/oe-alliance-plugins/Sudoku/tags)
+[![Latest Release](https://img.shields.io/github/release-date/oe-alliance-plugins/Sudoku?label=From&color=darkviolet)](https://github.com/oe-alliance-plugins/Sudoku/releases/latest)
+[![Github last commit](https://img.shields.io/github/last-commit/oe-alliance-plugins/Sudoku)](https://github.com/oe-alliance-plugins/Sudoku)
+[![GitHub Activity](https://img.shields.io/github/commit-activity/y/oe-alliance-plugins/Sudoku.svg?label=commits)](https://github.com/oe-alliance-plugins/Sudoku/commits)
+[![GitHub Activity](https://img.shields.io/github/commit-activity/m/oe-alliance-plugins/Sudoku.svg?label=commits)](https://github.com/oe-alliance-plugins/Sudoku/commits)
 
 ## SonarCloud status
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_sudoku&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_sudoku)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_sudoku&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_sudoku)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_sudoku&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_sudoku)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_sudoku&metric=bugs)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_sudoku)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_sudoku&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_sudoku)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_sudoku&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_sudoku)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_sudoku&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_sudoku)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_sudoku&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_sudoku)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_Sudoku&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_Sudoku)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_Sudoku&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_Sudoku)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_Sudoku&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_Sudoku)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_Sudoku&metric=bugs)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_Sudoku)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_Sudoku&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_Sudoku)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_Sudoku&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_Sudoku)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_Sudoku&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_Sudoku)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_Sudoku&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_Sudoku)
 
-[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_sudoku)
+[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_Sudoku)
 
 ---
 
@@ -45,7 +45,7 @@ This plugin is released under GPLv3. See [LICENSE](https://www.gnu.org/licenses/
 
 ### 🤝 Contributing & Contact
 
-sudoku is created by users for users and we welcome every contribution. There are no highly paid developers. There are only users who have seen a problem and done their best to fix it. This means sudoku will always need the contributions of users like you. How can you get involved?
+Sudoku is created by users for users and we welcome every contribution. There are no highly paid developers. There are only users who have seen a problem and done their best to fix it. This means Sudoku will always need the contributions of users like you. How can you get involved?
 
 For questions or feedback, feel free and please open an issue or contribute with a Pull Request!
 
