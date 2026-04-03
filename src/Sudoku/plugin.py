@@ -26,7 +26,6 @@ helper = 'The playing strength can be changed with the "<" and ">"\nkeys, pressi
 
 
 def getDesktopSize():
-	from enigma import getDesktop
 	s = getDesktop(0).size()
 	return (s.width(), s.height())
 
@@ -218,19 +217,6 @@ class SudokuCell:
 # mainwindow...
 class Sudoku(Screen):
 	def __init__(self, session):
-		# get framebuffer resolution...
-		desk = getDesktop(0)
-		w = int(desk.size().width())
-		h = int(desk.size().height())
-		# display window in center...
-		if isFHD():
-			x = 60
-			y = 140
-		else:
-			x = 0
-			y = 0
-			# x = (w - 520) // 2
-			# y = (h - 390) // 2
 		# set skin...
 		if isFHD():
 			Sudoku.skin = """
