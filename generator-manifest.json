@@ -1,0 +1,18 @@
+{
+  "branch": "main",
+  "depends_recipe": "",
+  "description_control": "Sudoku Game FHD modded by Lululla",
+  "description_recipe": "Sudoku Game FHD modded by Lululla",
+  "history_source_dir": "sudoku",
+  "internal_package_name": "enigma2-plugin-extensions-sudoku",
+  "module_dir_name": "Sudoku",
+  "output_subdir": "sudoku",
+  "package_name": "enigma2-plugin-extensions-sudoku",
+  "plugin_src_rel": "sudoku",
+  "python_package": "Sudoku",
+  "rdepends_recipe": "",
+  "replaces": "",
+  "repo_name": "sudoku",
+  "rrecommends": "",
+  "rreplaces": ""
+}
